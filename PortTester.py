@@ -44,13 +44,17 @@ def main():
     PortTester([["aerohive.com","80"]], output)
     
     print ("\nTesting the ability to reach Hive Manager NG servers using default settings.")
+    #HMNG servers will not respond to us because our serial number is not registered in their DB!
     #NG_Default_Servers = [['redirector.aerohive.com', '22'],['redirector.aerohive.com', '12222'], ['hmng-prd-ie-cwpm-01.aerohive.com', '12222'], ['hmng-prd-ie-cwps-01.aerohive.com', '12222'], ['hmng-prd-ie-cwps-02.aerohive.com', '12222'], ['hmng-prd-va-cwpm-01.aerohive.com', '12222'], ['hmng-prd-va-cwps-01.aerohive.com', '12222'], ['hmng-prd-va-cwps-02.aerohive.com', '12222']]
-    NG_Default_Servers = [['redirector.aerohive.com', '22'],['redirector.aerohive.com', '12222']]
+    # Port 12222 seems to fail for both UDP and TCP. Not sure why. Need response from CloudOps to get answers.
+    NG_Default_Servers = [['redirector.aerohive.com', '22']]
     PortTester(NG_Default_Servers, output)
     
-    #print("\nTesting fallback ports...")
+    print("\nTesting fallback ports...")
+    #HMNG servers will not respond to us because our serial number is not registered in their DB!
     #NG_Fallback_Servers = [['redirector.aerohive.com', '22'],['redirector.aerohive.com', '12222'], ['hmng-prd-ie-cwpm-01.aerohive.com', '443'], ['hmng-prd-ie-cwps-01.aerohive.com', '443'], ['hmng-prd-ie-cwps-02.aerohive.com', '443'], ['hmng-prd-va-cwpm-01.aerohive.com', '443'], ['hmng-prd-va-cwps-01.aerohive.com', '443'], ['hmng-prd-va-cwps-02.aerohive.com', '443']]
-    #PortTester(NG_Fallback_Servers, output)
+    NG_Fallback_Servers = [['redirector.aerohive.com','443']]
+    PortTester(NG_Fallback_Servers, output)
     
     print("\nTesting ID Manager Communication")
     IDM_Servers = [['auth.aerohive.com', '443'], ['auth.aerohive.com', '2083'], ['auth.aerohive.com', '80'], ['idmanager.aerohive.com', '443'], ['idmanager-ca.aerohive.com', '443']]
