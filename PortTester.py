@@ -20,7 +20,7 @@ class PortTester(object):
   def testPort(self, host, port, log):
       #print 'Testing %s on port %s' % (host, port)
       try:
-          connection = telnetlib.Telnet(host, port, 5)
+          connection = telnetlib.Telnet(host, port, 10)
           log.write('%s,%s,pass\n' % (host,port))
           log.flush()
           print('%s:%s pass' %(host, port))
@@ -94,7 +94,6 @@ def udpTestForNG (host, port, log):
         data = s.recvfrom(1024)
         reply = data[0]
         address = data[1]
-        print 'passed : ' + reply
         # write the result to the log
         log.write('%s,%s,pass\n' % (host,port))
         log.flush()
